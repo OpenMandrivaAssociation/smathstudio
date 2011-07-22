@@ -22,11 +22,12 @@ Requires: mono, mono-winforms
 A free mathematical package with a graphical interface for the calculation 
 of mathematical expressions, and constructing two-dimensional and three-dimensional graphs.
 
+%build
 %prep
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT
 
-%setup -n SMathStudioDesktop.0_89.Mono
+%setup -q -n SMathStudioDesktop.0_89.Mono
 
 %pre
 rm -f %{_bindir}/smathstudio
@@ -42,6 +43,7 @@ rm -rf /opt/%{name}-%{version}
 
 %install
 rm -r -f /opt/%{name}-%{version}
+rm -rf $RPM_BUILD_ROOT
 mkdir $RPM_BUILD_ROOT/opt
 mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}
 mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}/book
@@ -103,7 +105,7 @@ install -m 7655 smathstudio_mono \
 %{buildroot}%{_bindir}/smathstudio_mono
 
 %clean
-
+rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root, root)
 
@@ -111,4 +113,4 @@ install -m 7655 smathstudio_mono \
 %{_bindir}/smathstudio_mono
 %{_datadir}/applications/smathstudio.desktop
 
-
+%changelog
