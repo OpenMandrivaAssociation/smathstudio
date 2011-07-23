@@ -42,9 +42,7 @@ gzip -d /opt/%{name}-%{version}/plugins/*.gz
 rm -rf /opt/%{name}-%{version}
 
 %install
-rm -r -f /opt/%{name}-%{version}
-rm -rf $RPM_BUILD_ROOT
-mkdir $RPM_BUILD_ROOT/opt
+mkdir -p $RPM_BUILD_ROOT/opt
 mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}
 mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}/book
 mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}/lang
@@ -113,4 +111,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/smathstudio_mono
 %{_datadir}/applications/smathstudio.desktop
 
-%changelog
