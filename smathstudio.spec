@@ -1,4 +1,4 @@
-%define rel 1
+%define rel 2
 
 %{?dist: %{expand: %%define %dist 1}}
 
@@ -20,13 +20,11 @@ Requires: mono, mono-winforms
 
 %description
 A free mathematical package with a graphical interface for the calculation 
-of mathematical expressions, and constructing two-dimensional and three-dimensional graphs.
+of mathematical expressions, and constructing two-dimensional and
+three-dimensional graphs.
 
 %build
 %prep
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT
-
 %setup -q -n SMathStudioDesktop.0_89.Mono
 
 %pre
@@ -42,38 +40,38 @@ gzip -d /opt/%{name}-%{version}/plugins/*.gz
 rm -rf /opt/%{name}-%{version}
 
 %install
-mkdir -p $RPM_BUILD_ROOT/opt
-mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}
-mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}/book
-mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}/lang
-mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}/examples
-mkdir $RPM_BUILD_ROOT/opt/%{name}-%{version}/plugins
+mkdir -p %{buildroot}/opt
+mkdir %{buildroot}/opt/%{name}-%{version}
+mkdir %{buildroot}/opt/%{name}-%{version}/book
+mkdir %{buildroot}/opt/%{name}-%{version}/lang
+mkdir %{buildroot}/opt/%{name}-%{version}/examples
+mkdir %{buildroot}/opt/%{name}-%{version}/plugins
 
-mkdir $RPM_BUILD_ROOT/usr
-mkdir $RPM_BUILD_ROOT/usr/bin
-mkdir $RPM_BUILD_ROOT/usr/share
-mkdir $RPM_BUILD_ROOT/usr/share/applications
-#cp -a lang $RPM_BUILD_ROOT/opt/%{name}-%{version}/
-#cp -a examples $RPM_BUILD_ROOT/opt/%{name}-%{version}/
-#cp -a book $RPM_BUILD_ROOT/opt/%{name}-%{version}/
-install -Dm644 *.pc $RPM_BUILD_ROOT/opt/%{name}-%{version}/
-install -Dm755 *.dll $RPM_BUILD_ROOT/opt/%{name}-%{version}/
-install -Dm755 *.exe $RPM_BUILD_ROOT/opt/%{name}-%{version}/
+mkdir %{buildroot}/usr
+mkdir %{buildroot}/usr/bin
+mkdir %{buildroot}/usr/share
+mkdir %{buildroot}/usr/share/applications
+#cp -a lang %{buildroot}/opt/%{name}-%{version}/
+#cp -a examples %{buildroot}/opt/%{name}-%{version}/
+#cp -a book %{buildroot}/opt/%{name}-%{version}/
+install -Dm644 *.pc %{buildroot}/opt/%{name}-%{version}/
+install -Dm755 *.dll %{buildroot}/opt/%{name}-%{version}/
+install -Dm755 *.exe %{buildroot}/opt/%{name}-%{version}/
 gzip lang/*
 gzip book/*
 gzip examples/*
 gzip plugins/*
-cp lang/* $RPM_BUILD_ROOT/opt/%{name}-%{version}/lang
-cp book/* $RPM_BUILD_ROOT/opt/%{name}-%{version}/book
-cp examples/* $RPM_BUILD_ROOT/opt/%{name}-%{version}/examples
-cp plugins/* $RPM_BUILD_ROOT/opt/%{name}-%{version}/plugins
+cp lang/* %{buildroot}/opt/%{name}-%{version}/lang
+cp book/* %{buildroot}/opt/%{name}-%{version}/book
+cp examples/* %{buildroot}/opt/%{name}-%{version}/examples
+cp plugins/* %{buildroot}/opt/%{name}-%{version}/plugins
 
-install -Dm644 %{SOURCE1} $RPM_BUILD_ROOT/opt/%{name}-%{version}/SSLogo48.png
-echo "//// SMath Studio 0.88" >> $RPM_BUILD_ROOT/opt/%{name}-%{version}/settings.inf
-echo "Language=RUS" >> $RPM_BUILD_ROOT/opt/%{name}-%{version}/settings.inf
+install -Dm644 %{SOURCE1} %{buildroot}/opt/%{name}-%{version}/SSLogo48.png
+echo "//// SMath Studio 0.88" >> %{buildroot}/opt/%{name}-%{version}/settings.inf
+echo "Language=RUS" >> %{buildroot}/opt/%{name}-%{version}/settings.inf
 
 
-chmod 666 $RPM_BUILD_ROOT/opt/%{name}-%{version}/settings.inf
+chmod 666 %{buildroot}/opt/%{name}-%{version}/settings.inf
 
 install -dm 755 %{buildroot}%{_datadir}/applications
 cat > %{name}.desktop << EOF
@@ -103,11 +101,19 @@ install -m 7655 smathstudio_mono \
 %{buildroot}%{_bindir}/smathstudio_mono
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %files
 %defattr(-,root, root)
 
 /opt/%{name}-%{version}
 %{_bindir}/smathstudio_mono
 %{_datadir}/applications/smathstudio.desktop
+
+
+
+%changelog
+* Sat Jul 23 2011 Александр Казанцев <kazancas@mandriva.org> 0.89-1mdv2011.0
++ Revision: 691160
+- imported package smathstudio
+- Created package structure for smathstudio.
 
