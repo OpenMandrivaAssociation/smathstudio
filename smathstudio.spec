@@ -4,7 +4,7 @@ Summary: Small mathematic packet with MathCad style
 
 Name: smathstudio
 Version: 0.89
-Release: 3
+Release: 4
 License: EULA
 Group: Sciences/Mathematics
 URL: http://ru.smath.info/forum/default.aspx?g=posts&t=130
