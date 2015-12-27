@@ -12,6 +12,7 @@ URL: http://ru.smath.info/forum/default.aspx?g=posts&t=130
 Source0: SMathStudioDesktop.0_89.Mono.tar.gz
 Source1: SSLogo48.png
 #Source2: Text_RUS.lang
+Source100:	smathstudio.rpmlintrc
 
 #Obsoletes: smathstudio < %{version}
 Requires: mono, mono-winforms
