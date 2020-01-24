@@ -3,13 +3,13 @@
 Summary: Small mathematic packet with MathCad style
 
 Name: smathstudio
-Version: 0.89
-Release: 5
+Version: 0.99.7030
+Release: 1
 License: EULA
 Group: Sciences/Mathematics
 URL: http://ru.smath.info/forum/default.aspx?g=posts&t=130
 
-Source0: SMathStudioDesktop.0_89.Mono.tar.gz
+Source0: https://smath.com/file/5TGzK/SMathStudioDesktop.0_99_7030.Mono.tar.gz
 Source1: SSLogo48.png
 #Source2: Text_RUS.lang
 Source100:	smathstudio.rpmlintrc
@@ -24,7 +24,7 @@ three-dimensional graphs.
 
 %build
 %prep
-%setup -q -n SMathStudioDesktop.0_89.Mono
+%setup -q -n SMathStudioDesktop.0_99_7030.Mono
 
 %pre
 rm -f %{_bindir}/smathstudio
@@ -51,7 +51,7 @@ mkdir -p %{buildroot}/usr/share/applications
 #cp -a lang %{buildroot}/opt/%{name}-%{version}/
 #cp -a examples %{buildroot}/opt/%{name}-%{version}/
 #cp -a book %{buildroot}/opt/%{name}-%{version}/
-install -Dm644 *.pc %{buildroot}/%{_datadir}/%{name}-%{version}/
+#install -Dm644 *.pc %{buildroot}/%{_datadir}/%{name}-%{version}/
 install -Dm755 *.dll %{buildroot}/%{_datadir}/%{name}-%{version}/
 install -Dm755 *.exe %{buildroot}/%{_datadir}/%{name}-%{version}/
 gzip lang/*
