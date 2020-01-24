@@ -4,7 +4,7 @@ Summary: Small mathematic packet with MathCad style
 
 Name: smathstudio
 Version: 0.99.7030
-Release: 5
+Release: 1
 License: EULA
 Group: Sciences/Mathematics
 URL: http://ru.smath.info/forum/default.aspx?g=posts&t=130
@@ -51,7 +51,7 @@ mkdir -p %{buildroot}/usr/share/applications
 #cp -a lang %{buildroot}/opt/%{name}-%{version}/
 #cp -a examples %{buildroot}/opt/%{name}-%{version}/
 #cp -a book %{buildroot}/opt/%{name}-%{version}/
-install -Dm644 *.pc %{buildroot}/%{_datadir}/%{name}-%{version}/
+#install -Dm644 *.pc %{buildroot}/%{_datadir}/%{name}-%{version}/
 install -Dm755 *.dll %{buildroot}/%{_datadir}/%{name}-%{version}/
 install -Dm755 *.exe %{buildroot}/%{_datadir}/%{name}-%{version}/
 gzip lang/*
