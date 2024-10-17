@@ -7,7 +7,7 @@ Version: 0.99.7030
 Release: 1
 License: EULA
 Group: Sciences/Mathematics
-URL: http://ru.smath.info/forum/default.aspx?g=posts&t=130
+URL: https://ru.smath.info/forum/default.aspx?g=posts&t=130
 
 Source0: https://smath.com/file/5TGzK/SMathStudioDesktop.0_99_7030.Mono.tar.gz
 Source1: SSLogo48.png
